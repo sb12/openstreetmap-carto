@@ -40,13 +40,45 @@ contains fixes for europe-centric worldview :)
 				point-ignore-placement: true;
 			}
 		}
-        [access='private'] {
-        	line-width: 4;
-        	line-color: #efa9a9;
-        	line-dasharray: 6,8;
-        	line-opacity: 0.5;
-        	line-join: round;
-        	line-cap: round;
+        	[access='private'] {
+			line-width: 4;
+			line-color: #efa9a9;
+			line-dasharray: 6,8;
+			line-opacity: 0.5;
+			line-join: round;
+			line-cap: round;
+		}
+	}
+	[sport='volleyball'] {
+		[surface='clay']::surface {
+                  polygon-fill: @sport-surface-clay;
+                  line-width: 0.6;
+                  line-color: saturate(darken(@sport-surface-clay, 30%), 20%);
+		}
+		[surface='grass']::surface {
+                  polygon-fill: @sport-surface-grass;
+                  line-width: 0.6;
+                  line-color: saturate(darken(@sport-surface-grass, 30%), 20%); 
+                }
+		[pitch_area<1100][d13>20][d13<52] {			/* area size / diagonal check */
+			[d12>20][d12<45][d23>8][d23<30] { 		/* 1>2 = length / 2>3 = width */
+				point-file: url('symbols-de/sports/sports-volleyball.svg');
+				[zoom>=16] { point-transform: "rotate([angle]) scale(0.0517*[labelsizefactor])"; }
+				[zoom>=17] { point-transform: "rotate([angle]) scale(0.1035*[labelsizefactor])"; }
+				[zoom>=18] { point-transform: "rotate([angle]) scale(0.207*[labelsizefactor])"; }
+				[zoom>=19] { point-transform: "rotate([angle]) scale(0.414*[labelsizefactor])"; }
+				[zoom>=20] { point-transform: "rotate([angle]) scale(0.828*[labelsizefactor])"; }
+				point-ignore-placement: true;
+			}
+			[d23>20][d23<45][d12>8][d12<30] { 		/* 1>2 = width / 2>3 = length -> rotate by 90° */
+				point-file: url('symbols-de/sports/sports-volleyball.svg');
+				[zoom>=16] { point-transform: "rotate([angle]+90) scale(0.0517*[labelsizefactor])"; }
+				[zoom>=17] { point-transform: "rotate([angle]+90) scale(0.1035*[labelsizefactor])"; }
+				[zoom>=18] { point-transform: "rotate([angle]+90) scale(0.207*[labelsizefactor])"; }
+				[zoom>=19] { point-transform: "rotate([angle]+90) scale(0.414*[labelsizefactor])"; }
+				[zoom>=20] { point-transform: "rotate([angle]+90) scale(0.828*[labelsizefactor])"; }
+				point-ignore-placement: true;
+			}
 		}
 	}
 	
